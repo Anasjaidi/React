@@ -33,3 +33,29 @@ const app = _ => {
 
 ## What is Props ?
 > In React, props (short for "properties") are a way for components to receive data from their parent component. They are passed down from the parent component as attributes on the component's JSX element, and can be accessed within the component using the this.props object. Props allow components to be reusable and flexible by allowing them to accept different data based on the context in which they are used.
+
+## what is Composition ?
+> React has a powerful composition model, and we recommend using composition instead of inheritance to reuse code between components.
+#### example:
+```jsx
+    function FancyBorder(props) {
+      return (
+        <div className={'FancyBorder FancyBorder-' + props.color}>
+          {props.children}
+        </div>
+      );
+    }
+    
+    function WelcomeDialog() {
+      return (
+        <FancyBorder color="blue">
+          <h1 className="Dialog-title">
+            Welcome
+          </h1>
+          <p className="Dialog-message">
+            Thank you for visiting our spacecraft!
+          </p>
+        </FancyBorder>
+      );
+    }
+```
