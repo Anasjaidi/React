@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import ExpenseItem from "./components/Expenses/ExpenseItem";
+import Expenses from "./components/Expenses/Expenses";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	// Jsx under the hood 
+	// 1) element string if it html elemnt
+	// 2) options like: classname or props
+	// 3) child element
+	return React.createElement(
+		"div",
+		{ className: "App" },
+		React.createElement(Expenses, {})
+	);
+	// return (
+	// 	<div className="App">
+	// 		<Expenses/ >
+	// 	</div>
+	// );
 }
 
 export default App;
