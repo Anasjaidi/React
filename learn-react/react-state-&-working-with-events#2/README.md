@@ -18,3 +18,28 @@
 
       export default MyComponent;
   ```
+
+## what is satate?
+> In React, state refers to a way of storing and managing data that can change within a component. It allows a component to keep track of its internal data and re-render itself when that data changes.
+
+#### example:
+```jsx
+        import React, { useState } from 'react';
+      
+      function MyComponent() {
+        const [inputValue, setInputValue] = useState('');
+      
+        function handleInputChange(event) {
+          setInputValue(event.target.value);
+        }
+      
+        return (
+          <div>
+            <input value={inputValue} onChange={handleInputChange} />
+            <p>{`The input value is: ${inputValue}`}</p>
+          </div>
+        );
+      }
+      
+      export default MyComponent;
+```
