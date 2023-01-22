@@ -12,16 +12,19 @@ const ExpenseForm = () => {
 	// 	date: '',
 	// });
   const titleChangeHandler = e => {
-    // setstate({...state, title: e.target.value});
 		setTitle(e.target.value);
+    // setstate({...state, title: e.target.value});
+    // setstate(prevState => {return {...prevState, title: e.target.value}});
   }
   const amountChangeHandler = e => {
-		// setstate({...state, amount: e.target.value});
 		setAmount(e.target.value);
+		// setstate({...state, amount: e.target.value});
+		// setstate(prevState => {return {...prevState, amount: e.target.value}});
   }
   const dateChangeHandler = e => {
-		// setstate({...state, date: e.target.value});
 		setDate(e.target.value);
+		// setstate({...state, date: e.target.value});
+		// setstate(prevState => {return {...prevState, date: e.target.value}});
   }
 
 	return (
