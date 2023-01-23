@@ -1,67 +1,8 @@
-## Events in React ?
+## React Key prop ?
+> In React, a key is a special string attribute that you can provide to an element in a React component's array of elements. The key helps React identify which items have changed, are added, or are removed. This allows React to efficiently update the user interface. Keys should be unique among the siblings and should be stable. It is a good practice to use keys when generating a list of components from an array.
 
-> In React, events are actions or occurrences that happen in the browser, such as a user clicking a button or a page finishing loading. React provides a way for developers to handle these events and respond to them in the application through event listeners. This is done by attaching a function to an event using the on prefix and the event name, such as onClick for a click event. When the event occurs, the function is called and can perform an action or update
-
-#### example:
-
-```jsx
-const MyComponent = () => {
-	const handleClick = () => {
-		console.log("clicked");
-	};
-
-	return <button onClick={handleClick}>Click</button>;
-};
-
-export default MyComponent;
-```
-
-## what is satate?
-
-> In React, state refers to a way of storing and managing data that can change within a component. It allows a component to keep track of its internal data and re-render itself when that data changes.
-
-#### example:
-
-```jsx
-import React, { useState } from "react";
-
-function MyComponent() {
-	const [inputValue, setInputValue] = useState("");
-
-	function handleInputChange(event) {
-		setInputValue(event.target.value);
-	}
-
-	return (
-		<div>
-			<input value={inputValue} onChange={handleInputChange} />
-			<p>{`The input value is: ${inputValue}`}</p>
-		</div>
-	);
-}
-
-export default MyComponent;
-```
-
-## two-way Binding for managing input State?
-
-> Two-way data binding in React refers to the process of synchronizing a component's state with its corresponding input fields or elements in the rendered DOM. This allows for real-time updates to the component's state as the user interacts with the input fields, as well as updates to the input fields as the component's state changes. One way to achieve two-way binding in React is by using the value and onChange props on input fields, where the value prop is set to the component's state and the onChange prop is used to handle updates to the input field,
-
-#### example:
-
-```jsx
-import React, { useState } from "react";
-
-function MyComponent() {
-	const [name, setName] = useState("");
-
-	return (
-		<div>
-			<input value={name} onChange={(event) => setName(event.target.value)} />
-			<p>Hello, {name}!</p>
-		</div>
-	);
-}
-
-export default MyComponent;
-```
+## how key works ?
+> When React renders a component that has a list of items, it keeps track of the order of the items and the keys associated with each item. When the component updates and the list of items changes, React uses the keys to determine which items have been added, removed, or moved.
+> For example, let's say you have a component that renders a list of items. Each item is represented by a child component that has a key attribute. When the component first renders, React assigns a key to each child component based on the value of the key attribute.
+> When the list of items updates, React compares the keys of the new list of items to the keys of the old list. If an item has a new key, React treats it as a new item and adds it to the list. If an item has a key that already exists, React updates the existing item with the new data. If an item is missing from the new list, React removes it from the user interface.
+> By using keys, React can efficiently update the list of items without having to re-render the entire list. This can greatly improve the performance of your application, especially if the list of items is large or if the items are complex.
