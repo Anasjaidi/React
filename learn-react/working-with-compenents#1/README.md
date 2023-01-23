@@ -1,5 +1,6 @@
 ## whats is React?
 > react is Js Library for building interfaces
+![what is react]("./slides/react.png")
 
 ## why react ?
 > react makes building complex, interactive and reactive user 
