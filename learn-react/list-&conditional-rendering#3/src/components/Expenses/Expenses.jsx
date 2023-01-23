@@ -19,9 +19,17 @@ export default function Expenses(props) {
 				selected={filteredYear}
 				onChangeFilter={filterChangeHandler}
 			/>
-			{filtredExpenses.length == 0 ? <p>No Expnses found.</p> : filtredExpenses.map((exp) => (
-				<ExpenseItem title={exp.title} amount={exp.amount} date={exp.date} key={exp.id} />
-			))}
+			{/* {filtredExpenses.length == 0 ? <p>No Expnses found.</p> : filtredExpenses.map((exp) => (<ExpenseItem title={exp.title} amount={exp.amount} date={exp.date} key={exp.id} />))} */}
+			{!filtredExpenses.length && <p>No Expnses found.</p>};
+			{filtredExpenses.length &&
+				filtredExpenses.map((exp) => (
+					<ExpenseItem
+						title={exp.title}
+						amount={exp.amount}
+						date={exp.date}
+						key={exp.id}
+					/>
+				))}
 		</Card>
 	);
 }
