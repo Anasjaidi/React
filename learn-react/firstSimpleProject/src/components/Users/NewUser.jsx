@@ -18,7 +18,8 @@ const AddUser = (props) => {
 
 	const addNewUser = (e) => {
 		e.preventDefault();
-
+    if (entredaAge.trim().length === 0 || entredUsername.trim().length === 0) return
+    if (+entredaAge < 1) return;
     setEntredUsername('')
     setEntredaAge('')
 	};
