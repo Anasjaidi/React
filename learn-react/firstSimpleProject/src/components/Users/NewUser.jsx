@@ -2,13 +2,13 @@ import Button from "../UI/Button";
 import Card from "../UI/Card";
 import { useState } from "react";
 import ErrorModal from "../UI/ErrorModal";
-import ErrorModalStyles from "../UI/ErrorModal.module.css";
 
 import styles from "./NewUser.module.css";
 
 const AddUser = (props) => {
 	const [entredUsername, setEntredUsername] = useState("");
 	const [entredaAge, setEntredaAge] = useState("");
+	const [error, setError] = useState();
 
 	const usernameChangeHandler = (e) => {
 		setEntredUsername(e.target.value);
@@ -20,8 +20,9 @@ const AddUser = (props) => {
 	const addNewUser = (e) => {
 		e.preventDefault();
 		if (entredaAge.trim().length === 0 || entredUsername.trim().length === 0)
-			return;
-		if (+entredaAge < 1) return;
+			setError({ content: "set valid name and ageplease!", title: "Invalid Name or age" });
+		if (+entredaAge < 1)
+			setError({ content: "set valid age(>0) please!", title: "Invalid age" });
 		props.addNewUser({
 			name: entredUsername,
 			age: entredaAge,
@@ -33,8 +34,7 @@ const AddUser = (props) => {
 
 	return (
 		<div>
-			<div className={ErrorModalStyles.backdrop}></div>
-			<ErrorModal title="something" content="badly going wrong" />
+			{error && <ErrorModal title={error.title} content={error.content} onClick={setError}/>}
 			<Card className={styles.input}>
 				<form onSubmit={addNewUser}>
 					<label htmlFor="username">username</label>
