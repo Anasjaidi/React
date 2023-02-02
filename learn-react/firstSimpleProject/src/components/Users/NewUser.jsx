@@ -20,6 +20,7 @@ const AddUser = (props) => {
 		e.preventDefault();
     if (entredaAge.trim().length === 0 || entredUsername.trim().length === 0) return
     if (+entredaAge < 1) return;
+		props.addNewUser({name: entredUsername, age: entredaAge, id: Math.random().toString()})
     setEntredUsername('')
     setEntredaAge('')
 	};
