@@ -11,12 +11,18 @@ function App() {
     setUsers(prevUsers => [user, ...prevUsers])
   }
 
+  function deleteUser() {
+    setUsers(prevUsers => {
+      return prevUsers.filter(user => user.id !== this.id)
+    })
+  }
+
   return (
-    <div className='app'>
-      <NewUser addNewUser={addNewUserHandler}/>
-      <UsersList users={users}/>
-    </div>
-  );
+		<div className="app">
+			<NewUser addNewUser={addNewUserHandler} />
+			<UsersList users={users} deleteUser={deleteUser} />
+		</div>
+	);
 }
 
 export default App;
