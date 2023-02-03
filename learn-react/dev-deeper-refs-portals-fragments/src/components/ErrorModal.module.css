@@ -1,0 +1,43 @@
+.backdrop {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.75);
+	z-index: 10;
+}
+
+.modal {
+	background: white;
+	width: 60%;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 100;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.modal header {
+  padding: 8px 16px;
+  color: aliceblue;
+  background:cadetblue;
+}
+
+.modal header+div {
+  padding: 0 16px;
+}
+.modal header+div+div {
+  padding: 20px 16px 12px;
+}
+
+.modal header+div+div button {
+  padding: 8px 14px;
+  background: cornflowerblue;
+  outline: none;
+  border: none;
+  color: aliceblue;
+  border-radius: 4px;
+}
