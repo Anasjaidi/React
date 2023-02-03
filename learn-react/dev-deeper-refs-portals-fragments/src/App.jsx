@@ -4,12 +4,17 @@ import Wrapper from './components/Helpers/Wrapper'
 import img1 from "./../../../../../Desktop/IMG20210510152317.jpg";
 import img2 from "./../../../../../Desktop/IMG20210510152324.jpg";
 import ErrorModal from './components/ErrorModal';
+import Login from './components/Login';
 
 
 function App() {
   const [error, seterror] = useState();
   const modalButtonhandler = e => {
     seterror(undefined)
+  }
+  const loginButtonhandler = e => {
+    console.log(e)
+    seterror(1)
   }
   return (
     <Wrapper className="App">
@@ -24,6 +29,7 @@ function App() {
     <>
       {error && <ErrorModal onClick={modalButtonhandler}/>}
     </>
+    <Login onClick={loginButtonhandler}/>
     </Wrapper>
   )
 }
