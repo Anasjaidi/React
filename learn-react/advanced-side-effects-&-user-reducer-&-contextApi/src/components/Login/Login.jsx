@@ -1,49 +1,59 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useState, useEffect, useReducer, useContext } from "react";
 
 import Card from "../UI/Card/Card";
 import classes from "./Login.module.css";
 import Button from "../UI/Button/Button";
 
+import ContextData from "../../context/ContextData";
+
 const emailReducer = (state, action) => {
+
 	if (action.type === "EMAIL_CHANGE")
 		return { value: action.val, isValid: action.val.includes("@") };
+
 	else if (action.type === "EMAIL_BLUR")
 		return { value: state.value, isValid: state.value.includes("@") };
+
 	return { value: "", isValid: false };
 };
 const passwordReducer = (state, action) => {
+
 	if (action.type === "PASSWORD_CHANGE")
 		return { value: action.val, isValid: action.val.trim().length > 6 };
+
 	else if (action.type === "PASSWORD_BLUR")
 		return { value: state.value, isValid: state.value.trim().length > 6 };
+
 	return { value: "", isValid: false };
 };
 
 const Login = (props) => {
+
+	const ctx = useContext(ContextData);
+
 	const [emailState, dispatchEmail] = useReducer(emailReducer, {
 		value: "",
 		isValid: null,
 	});
+
 	const [passwordState, dispatchPassword] = useReducer(passwordReducer, {
 		value: "",
 		isValid: null,
 	});
-
+	
+	const [formIsValid, setFormIsValid] = useState(false);
 	// const [enteredEmail, setEnteredEmail] = useState('');
 	// const [emailIsValid, setEmailIsValid] = useState();
 	// const [enteredPassword, setEnteredPassword] = useState('');
 	// const [passwordIsValid, setPasswordIsValid] = useState();
-	const [formIsValid, setFormIsValid] = useState(false);
-  
-  const {isValid: passwordIsValid} = passwordState;
-  const {isValid: emailIsValid} = emailState;
+
+	const { isValid: passwordIsValid } = passwordState;
+	const { isValid: emailIsValid } = emailState;
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			console.log("checking!");
-			setFormIsValid(
-				passwordIsValid && emailIsValid
-			);
+			setFormIsValid(passwordIsValid && emailIsValid);
 		}, 1000);
 		return () => {
 			clearTimeout(timer);
@@ -68,7 +78,7 @@ const Login = (props) => {
 
 	const submitHandler = (event) => {
 		event.preventDefault();
-		props.onLogin(emailState.value, passwordState.value);
+		ctx.onLogin(emailState.value, passwordState.value);
 	};
 
 	return (
@@ -103,11 +113,7 @@ const Login = (props) => {
 					/>
 				</div>
 				<div className={classes.actions}>
-					<Button
-						type="submit"
-						className={classes.btn}
-						disabled={!(formIsValid)}
-					>
+					<Button type="submit" className={classes.btn} disabled={!formIsValid}>
 						Login
 					</Button>
 				</div>

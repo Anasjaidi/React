@@ -32,12 +32,14 @@ function App() {
 		<ContextData.Provider
 			value={{
 				isLoggedIn: isLoggedIn,
+				onLogout: logoutHandler,
+				onLogin: loginHandler,
 			}}
 		>
-			<MainHeader onLogout={logoutHandler} />
+			<MainHeader />
 			<main>
-				{!isLoggedIn && <Login onLogin={loginHandler} />}
-				{isLoggedIn && <Home onLogout={logoutHandler} />}
+				{!isLoggedIn && <Login />}
+				{isLoggedIn && <Home />}
 			</main>
 		</ContextData.Provider>
 		// </React.Fragment>
