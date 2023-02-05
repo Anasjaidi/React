@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 
-const ContextData = () => {
-  return (
-    <div>ContextData</div>
-  )
-}
+const ContextData = React.createContext({
+  isLoggedIn: false,
+});
 
-export default ContextData
+
+
+export default ContextData;
