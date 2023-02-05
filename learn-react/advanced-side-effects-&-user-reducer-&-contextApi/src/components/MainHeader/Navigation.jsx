@@ -4,7 +4,7 @@ import classes from "./Navigation.module.css";
 
 import ContextData from "../../context/ContextData";
 
-const Navigation = (props) => {
+const Navigation = () => {
   const ctx = useContext(ContextData);
 
 	return (

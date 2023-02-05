@@ -6,7 +6,7 @@ import Button from '../UI/Button/Button';
 
 import ContextData from '../../context/ContextData';
 
-const Home = (props) => {
+const Home = () => {
 	const ctx = useContext(ContextData);
   return (
 		<Card className={classes.home}>
