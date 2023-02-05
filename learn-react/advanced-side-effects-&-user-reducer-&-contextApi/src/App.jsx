@@ -29,13 +29,17 @@ function App() {
 
 	return (
 		// <React.Fragment>
-			<ContextData.Provider>
-				<MainHeader isAuthenticated={isLoggedIn} onLogout={logoutHandler} />
-				<main>
-					{!isLoggedIn && <Login onLogin={loginHandler} />}
-					{isLoggedIn && <Home onLogout={logoutHandler} />}
-				</main>
-			</ContextData.Provider>
+		<ContextData.Provider
+			value={{
+				isLoggedIn: isLoggedIn,
+			}}
+		>
+			<MainHeader onLogout={logoutHandler} />
+			<main>
+				{!isLoggedIn && <Login onLogin={loginHandler} />}
+				{isLoggedIn && <Home onLogout={logoutHandler} />}
+			</main>
+		</ContextData.Provider>
 		// </React.Fragment>
 	);
 }
