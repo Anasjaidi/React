@@ -6,7 +6,6 @@ import ContextData from "../../context/ContextData";
 
 const Navigation = () => {
   const ctx = useContext(ContextData);
-
 	return (
 		// <ContextData.Consumer>
 		// 	{(ctx) => {
