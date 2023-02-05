@@ -4,7 +4,7 @@ import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
 import MainHeader from "./components/MainHeader/MainHeader";
 
-import ContextData from "./data/ContextData";
+import ContextData from "./context/ContextData";
 
 function App() {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -28,15 +28,15 @@ function App() {
 	};
 
 	return (
-		<React.Fragment>
-			<ContextData>
+		// <React.Fragment>
+			<ContextData.Provider>
 				<MainHeader isAuthenticated={isLoggedIn} onLogout={logoutHandler} />
 				<main>
 					{!isLoggedIn && <Login onLogin={loginHandler} />}
 					{isLoggedIn && <Home onLogout={logoutHandler} />}
 				</main>
-			</ContextData>
-		</React.Fragment>
+			</ContextData.Provider>
+		// </React.Fragment>
 	);
 }
 
