@@ -20,9 +20,9 @@ const AddUser = (props) => {
 	const addNewUser = (e) => {
 		e.preventDefault();
 		if (entredaAge.trim().length === 0 || entredUsername.trim().length === 0)
-			setError({ content: "set valid name and ageplease!", title: "Invalid Name or age" });
+			return setError({ content: "set valid name and ageplease!", title: "Invalid Name or age" });
 		if (+entredaAge < 1)
-			setError({ content: "set valid age(>0) please!", title: "Invalid age" });
+			return setError({ content: "set valid age(>0) please!", title: "Invalid age" });
 		props.addNewUser({
 			name: entredUsername,
 			age: entredaAge,
