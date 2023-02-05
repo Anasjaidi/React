@@ -1,14 +1,16 @@
-import React from "react";
+import React, {useContext} from "react";
 
 import classes from "./Navigation.module.css";
 
 import ContextData from "../../context/ContextData";
 
 const Navigation = (props) => {
+  const ctx = useContext(ContextData);
+
 	return (
-		<ContextData.Consumer>
-			{(ctx) => {
-				return (
+		// <ContextData.Consumer>
+		// 	{(ctx) => {
+		// 		return (
 					<nav className={classes.nav}>
 						<ul>
 							{ctx.isLoggedIn && (
@@ -28,9 +30,9 @@ const Navigation = (props) => {
 							)}
 						</ul>
 					</nav>
-				);
-			}}
-		</ContextData.Consumer>
+		// 		);
+		// 	}}
+		// </ContextData.Consumer>
 	);
 };
 
