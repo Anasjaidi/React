@@ -14,5 +14,6 @@ module.exports = {
     "react/react-in-jsx-scope": 0,
     "react/function-component-definition": 0,
     "no-unused-vars": "warn",
+    "react/destructuring-assignment" : 0,
   },
 };
