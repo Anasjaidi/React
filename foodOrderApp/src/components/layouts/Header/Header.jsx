@@ -1,16 +1,15 @@
-import mealImg from "../../../assets/meals.jpg";
+import HeaderImage from "./HeaderImage";
 import styleClasses from "./Header.module.css";
+import HeaderCardButton from "./HeaderCardButton";
 
 const Header = (props) => {
   return (
     <>
       <header className={styleClasses.header}>
         <h1>foodOrderApp</h1>
-        <button type="button">cart</button>
+        <HeaderCardButton />
       </header>
-      <div className={styleClasses["main-image"]}>
-        <img src={mealImg} alt="" />
-      </div>
+      <HeaderImage className={styleClasses["main-image"]} />
     </>
   );
 };
