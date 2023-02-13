@@ -15,5 +15,6 @@ module.exports = {
     "react/function-component-definition": 0,
     "no-unused-vars": "warn",
     "react/destructuring-assignment" : 0,
+    "react/prop-types": 0,
   },
 };

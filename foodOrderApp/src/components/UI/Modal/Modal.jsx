@@ -1,9 +1,19 @@
 import React from "react";
 import styles from "./Modal.module.css";
 
-export const Backdrop = (props) => {
+const Backdrop = (props) => {
   return <div className={styles.backdrop}>{}</div>;
 };
-export const Modal = (props) => {
-  return <div className={styles.modal}>{}</div>;
+const ModalOverlay = (props) => {
+  return (
+    <div className={styles.modal}>
+      <div className={styles.content}>{props.children}</div>
+    </div>
+  );
 };
+
+const Modal = (props) => {
+  return <div>{}</div>;
+};
+
+export default Modal;
