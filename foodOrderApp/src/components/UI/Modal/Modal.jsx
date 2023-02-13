@@ -13,7 +13,12 @@ const ModalOverlay = (props) => {
 };
 
 const Modal = (props) => {
-  return <div>{}</div>;
+  return (
+    <>
+      <Backdrop />
+      <ModalOverlay>{props.children}</ModalOverlay>
+    </>
+  );
 };
 
 export default Modal;
