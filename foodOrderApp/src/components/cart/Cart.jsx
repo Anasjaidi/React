@@ -3,23 +3,29 @@ import styles from "./Cart.module.css";
 import Modal from "../UI/Modal/Modal";
 
 const Cart = () => {
-  const mealsItems = [
-    {
-      id: "m1",
-      name: "Sushi",
-      description: "Finest fish and veggies",
-      price: 22.99,
-    },
-    {
-      id: "m2",
-      name: "Schnitzel",
-      description: "A german specialty!",
-      price: 16.5,
-    },
-  ].map((item) => <li key={item.id}>{mealsItems.name}</li>);
+  const mealsItems = (
+    <ul className={styles["cart-items"]}>
+      {[
+        {
+          id: "m1",
+          name: "Sushi",
+          description: "Finest fish and veggies",
+          price: 22.99,
+        },
+        {
+          id: "m2",
+          name: "Schnitzel",
+          description: "A german specialty!",
+          price: 16.5,
+        },
+      ].map((item) => (
+        <li key={item.id}>{mealsItems.name}</li>
+      ))}
+    </ul>
+  );
 
   return (
-    <Modal className={styles["cart-items"]}>
+    <Modal>
       <div className={styles.total}>
         <span>Total Amount</span>
         <span>39.17</span>
