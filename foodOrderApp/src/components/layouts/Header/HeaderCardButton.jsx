@@ -1,5 +1,5 @@
 import React from "react";
-import CartIcon from "../../cart/Cart";
+import CartIcon from "../../cart/CartIcon";
 import styleClasses from "./HeaderCardButton.module.css";
 
 function HeaderCardButton() {
