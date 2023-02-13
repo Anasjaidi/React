@@ -2,6 +2,21 @@ import React from "react";
 import styles from "./Cart.module.css";
 
 const Cart = () => {
+  const mealsItems = [
+    {
+      id: "m1",
+      name: "Sushi",
+      description: "Finest fish and veggies",
+      price: 22.99,
+    },
+    {
+      id: "m2",
+      name: "Schnitzel",
+      description: "A german specialty!",
+      price: 16.5,
+    },
+  ].map((item) => <li key={item.id}>{mealsItems.name}</li>);
+
   return (
     <div className={styles["cart-items"]}>
       <div className={styles.total}>

@@ -57,6 +57,7 @@ const Login = () => {
 		}, 1000);
 		return () => {
 			clearTimeout(timer);
+			console.log('aaaaa')
 		};
 	}, [passwordIsValid, emailIsValid]);
 
