@@ -7,7 +7,7 @@ const Header = (props) => {
     <>
       <header className={styleClasses.header}>
         <h1>foodOrderApp</h1>
-        <HeaderCardButton />
+        <HeaderCardButton onClick={props.onShow}/>
       </header>
       <HeaderImage className={styleClasses["main-image"]} />
     </>
