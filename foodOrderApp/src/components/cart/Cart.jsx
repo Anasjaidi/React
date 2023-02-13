@@ -19,13 +19,14 @@ const Cart = () => {
           price: 16.5,
         },
       ].map((item) => (
-        <li key={item.id}>{mealsItems.name}</li>
+        <li key={item.id}>{item.name}</li>
       ))}
     </ul>
   );
 
   return (
     <Modal>
+      {mealsItems}
       <div className={styles.total}>
         <span>Total Amount</span>
         <span>39.17</span>
