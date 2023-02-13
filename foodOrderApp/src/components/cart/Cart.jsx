@@ -25,7 +25,7 @@ const Cart = (props) => {
   );
 
   return (
-    <Modal>
+    <Modal onClick={props.onClose}>
       {mealsItems}
       <div className={styles.total}>
         <span>Total Amount</span>
