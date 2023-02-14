@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import "./App.css";
 import Demo from "./components/demo/Demo";
 import Button from "./components/UI/Button";
@@ -10,7 +10,7 @@ import Button from "./components/UI/Button";
 function App() {
 	const [show, setShow] = useState(false);
   const buttonClickhandler = useCallback(() => {setShow(prec => !prec);}, [])
-
+  const nums = useMemo(() => [1,2,3,45], [])
   console.log("App running", show)
 	return (
 		<div className="App">
