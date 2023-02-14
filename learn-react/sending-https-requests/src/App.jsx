@@ -23,8 +23,16 @@ function App() {
 		fetch("https://swapi.dev/api/films/")
 			.then((res) => res.json())
 			.then((data) => {
-				setMovies(data.result);
-				console.log(data)
+				const moviesTranslated = data.results.map(e => {
+					return {
+						id: e.episode_id,
+						title: e.title,
+						openingText : e.opening_crawl,
+						releaseDate: e.release_date
+					}
+				})
+				setMovies(moviesTranslated);
+				console.log(moviesTranslated)
 			})
 			.catch((e) => console.error(e));
 		return () => {};
