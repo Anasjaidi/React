@@ -5,7 +5,12 @@ import "./App.css";
 
 function App() {
 	useEffect(() => {
-		const data = fetch("https://swapi.dev/api/films/12")
+		const data = fetch("https://swapi.dev/api/films/", {
+			'method': 'POST',
+			'body' : {
+				'name': "anas"
+			}
+		})
 			.then((res) => res.json())
 			.then((data) => console.log(data))
 			.catch(err => console.log(err));
