@@ -16,27 +16,22 @@ const data = fetch("https://swapi.dev/api/films/", {
 */
 
 function App() {
+	const [movies, setMovies] = useState([]);
+	const [loading, setLoading] = useState(false);
 
-	const [movies, setMovies] = useState([])
-
-	useEffect( () => {
-		fetch("https://swapi.dev/api/films/")
-			.then((res) => res.json())
-			.then((data) => {
-				const moviesTranslated = data.results.map(e => {
-					return {
-						id: e.episode_id,
-						title: e.title,
-						openingText : e.opening_crawl,
-						releaseDate: e.release_date
-					}
-				})
-				setMovies(moviesTranslated);
-				console.log(moviesTranslated)
-			})
-			.catch((e) => console.error(e));
-		return () => {};
-	}, []);
+	const fetchMovies = async () => {
+		try {
+			setLoading(true);
+			const res = await fetch("https://swapi.dev/api/films/");
+			const data = await res.json();
+			const moviesTranslated = data.results.map((e) => {
+				return {id: e.episode_id, title: e.title,openingText: e.opening_crawl,releaseDate: e.release_date};
+			});
+			setMovies(moviesTranslated);
+			console.log("ts")
+			setLoading(false);
+		} catch (err) {console.error(err)}
+	};
 	const dummyMovies = [
 		{
 			id: 1,
@@ -55,10 +50,10 @@ function App() {
 	return (
 		<React.Fragment>
 			<section>
-				<button>Fetch Movies</button>
+				<button onClick={fetchMovies}>Fetch Movies</button>
 			</section>
 			<section>
-				<MoviesList movies={movies} />
+				{loading ? <p>is loading</p> : <MoviesList movies={movies} />}
 			</section>
 		</React.Fragment>
 	);
