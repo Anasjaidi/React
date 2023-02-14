@@ -29,7 +29,7 @@ function App() {
 			});
 			setMovies(moviesTranslated);
 			console.log("ts")
-			setLoading(false);
+			setLoading(false); 
 		} catch (err) {console.error(err)}
 	};
 	const dummyMovies = [
@@ -53,7 +53,7 @@ function App() {
 				<button onClick={fetchMovies}>Fetch Movies</button>
 			</section>
 			<section>
-				{loading ? <p>is loading</p> : <MoviesList movies={movies} />}
+				{loading ? <p>is loading</p> : movies.length == 0 ? <p>nothing found</p> : <MoviesList movies={movies} />}
 			</section>
 		</React.Fragment>
 	);
