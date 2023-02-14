@@ -1,19 +1,32 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import MoviesList from "./components/MoviesList";
 import "./App.css";
 
+/**
+const data = fetch("https://swapi.dev/api/films/", {
+	'method': 'POST',
+	'body' : {
+		'name': "anas"
+	}
+})
+.then((res) => res.json())
+.then((data) => console.log(data))
+.catch(err => console.log(err));
+*/
+
 function App() {
-	useEffect(() => {
-		const data = fetch("https://swapi.dev/api/films/", {
-			'method': 'POST',
-			'body' : {
-				'name': "anas"
-			}
-		})
+
+	const [movies, setMovies] = useState([])
+
+	useEffect( () => {
+		fetch("https://swapi.dev/api/films/")
 			.then((res) => res.json())
-			.then((data) => console.log(data))
-			.catch(err => console.log(err));
+			.then((data) => {
+				setMovies(data.result);
+				console.log(data)
+			})
+			.catch((e) => console.error(e));
 		return () => {};
 	}, []);
 	const dummyMovies = [
@@ -37,7 +50,7 @@ function App() {
 				<button>Fetch Movies</button>
 			</section>
 			<section>
-				<MoviesList movies={dummyMovies} />
+				<MoviesList movies={movies} />
 			</section>
 		</React.Fragment>
 	);
