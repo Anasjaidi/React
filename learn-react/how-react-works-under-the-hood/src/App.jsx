@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import "./App.css";
 import Demo from "./components/demo/Demo";
 import Button from "./components/UI/Button";
@@ -9,14 +9,15 @@ import Button from "./components/UI/Button";
 
 function App() {
 	const [show, setShow] = useState(false);
+  const buttonClickhandler = useCallback(() => {setShow(prec => !prec);}, [])
 
-  console.log("App running")
+  console.log("App running", show)
 	return (
 		<div className="App">
 			<h1>Hi, There!</h1>
-			{show && <p>Hello again.</p>}
+			{/* {show && <p>Hello again.</p>} */}
 			<Demo show={false}></Demo>
-      <Button onClick={() => setShow(prec => !prec)}>click</Button>
+      <Button onClickHandler={buttonClickhandler}>click</Button>
 		</div>
 	);
 }
