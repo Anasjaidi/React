@@ -13,6 +13,9 @@ function App() {
   }, []);
 
   return (
+    /**
+     * the app gonna re-evaluated all of the elemnts if state is changes inside the app and if inside another wrapper all child of this wrapper gonna re-evaluate
+    */
     <div className="App">
       <h1>Hi, There!</h1>
       {show && <p>Hello again.</p>}
