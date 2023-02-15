@@ -1,4 +1,4 @@
-const useHttps = (config) => {
+const useHttps = (config, applyData) => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState(null);
 
@@ -9,7 +9,7 @@ const useHttps = (config) => {
 			const response = await fetch(config.url, {
 				method: config.method,
 				body: JSON.stringify(config.body),
-        "headers": config.headers
+				headers: config.headers,
 			});
 
 			if (!response.ok) {
@@ -17,14 +17,9 @@ const useHttps = (config) => {
 			}
 
 			const data = await response.json();
+       
 
-			const loadedTasks = [];
-
-			for (const taskKey in data) {
-				loadedTasks.push({ id: taskKey, text: data[taskKey].text });
-			}
-
-			setTasks(loadedTasks);
+      return {err: error, isLoading, sendReq: fetchTasks}
 		} catch (err) {
 			setError(err.message || "Something went wrong!");
 		}
