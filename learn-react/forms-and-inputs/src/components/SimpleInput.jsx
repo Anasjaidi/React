@@ -11,9 +11,13 @@ const SimpleInput = (props) => {
   const formSubmitHandler = e => {
     e.preventDefault();
 
+    if (nameInput === "") {
+      return;
+    }
+
     console.log(nameInput);
 
-    console.log(nameInputRef.current.value)
+    // console.log(nameInputRef.current.value)
 
     // nameInputRef.current.value = "", is worked but not ideal 
 
