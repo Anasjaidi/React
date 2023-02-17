@@ -9,7 +9,7 @@ const SimpleInput = (props) => {
 		blurHandler: nameInputBlurHnadler,
 		changeHandler: nameInputChangeHandler,
 		reset: nameInputReset,
-		inputIsValid: nameValueIsvalid
+		inputIsValid: nameValueIsvalid,
 	} = useInput();
 	const {
 		entredValue: emailInputValue,
@@ -17,7 +17,7 @@ const SimpleInput = (props) => {
 		blurHandler: emailInputBlurHnadler,
 		changeHandler: emailInputChangeHandler,
 		reset: emailInputReset,
-		inputIsValid: emailValueIsvalid
+		inputIsValid: emailValueIsvalid,
 	} = useInput();
 
 	const formIsValid = nameValueIsvalid && emailValueIsvalid;
@@ -29,24 +29,8 @@ const SimpleInput = (props) => {
 			return;
 		}
 		nameInputReset();
-		emailInputReset()
+		emailInputReset();
 	};
-
-	const nameFeedback = !nameInputIsInvalid ? null : (
-		<p className="error-text">name is empty</p>
-	);
-
-	const nameFormClass = !nameInputIsInvalid
-		? "form-control"
-		: "form-control invalid";
-
-	const emFeedback = !nameInputIsInvalid ? null : (
-		<p className="error-text">name is empty</p>
-	);
-
-	const emFormClass = !nameInputIsInvalid
-		? "form-control"
-		: "form-control invalid";
 
 	return (
 		<form onSubmit={formSubmitHandler}>
