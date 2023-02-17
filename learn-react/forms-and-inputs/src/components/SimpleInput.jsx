@@ -2,20 +2,21 @@ import { useState, useRef } from "react";
 
 const SimpleInput = (props) => {
 	const [nameInput, setNameInput] = useState("");
-	const [formIsValid, setFormIsValid] = useState(false);
+	// const [formIsValid, setFormIsValid] = useState(false);
   const [isInputTouched, setIsInputTouched] = useState(false);
-	const nameInputRef = useRef();
+	// const nameInputRef = useRef();
 
+	const formIsValid = nameInput.trim() != '';
 	const nameInputOnChangeHandler = (e) => {
 		setNameInput(e.target.value);
 	};
 
 	const nameInputOnBlurHandler = e => {
 		setIsInputTouched(true);
-		if (nameInput === "") {
-			setFormIsValid(false)
-			return;
-		}
+		// if (nameInput === "") {
+		// 	setFormIsValid(false)
+		// 	return;
+		// }
 	}
 
 	const formSubmitHandler = (e) => {
@@ -24,19 +25,20 @@ const SimpleInput = (props) => {
     setIsInputTouched(true);
 
 		if (nameInput === "") {
-      setFormIsValid(false)
+      // setFormIsValid(false)
 			return;
 		}
 
-    setFormIsValid(true)
+    // setFormIsValid(true)
 
-		console.log(nameInput);
+		// console.log(nameInput);
 
 		// console.log(nameInputRef.current.value)
 
 		// nameInputRef.current.value = "", is worked but not ideal
 
 		setNameInput(""); // for reset the input
+		setIsInputTouched(false)
 	};
 
 	const feedback = formIsValid  || !isInputTouched ? null : (
@@ -53,7 +55,7 @@ const SimpleInput = (props) => {
 				<input
 					type="text"
 					id="name"
-					ref={nameInputRef}
+					// ref={nameInputRef}
 					onBlur={nameInputOnBlurHandler}
 					onChange={nameInputOnChangeHandler}
 					value={nameInput}
