@@ -1,12 +1,13 @@
 import useInput from "../hooks/useInput";
 
-const classIsValid = (b) => {
-	return b ? "form-control" : "form-control invalid";
-};
+const classIsValid = (b) => (b ? "form-control" : "form-control invalid");
 
-const showErr = (hasErr, err) => {
-	return hasErr ? <p className="error-text">{err}</p> : null;
-};
+const showErr = (hasErr, err) =>
+	hasErr ? <p className="error-text">{err}</p> : null;
+
+
+const isEmpty = text => text.trim() !== ''
+const isEmail = text => text.includes('@')
 
 const BasicForm = (props) => {
 	const {
@@ -16,7 +17,7 @@ const BasicForm = (props) => {
 		reset: firstNameInputReset,
 		changeHandler: firstNameInputChangeHandler,
 		blurHandler: firstNameInputBlurHandler,
-	} = useInput();
+	} = useInput(isEmpty);
 	const {
 		value: lastNameInputvalue,
 		isValid: lastNameValueIsValid,
@@ -24,7 +25,7 @@ const BasicForm = (props) => {
 		reset: lastNameInputReset,
 		changeHandler: lastNameInputChangeHandler,
 		blurHandler: lastNameInputBlurHandler,
-	} = useInput();
+	} = useInput(isEmpty);
 	const {
 		value: emailInputvalue,
 		isValid: emailValueIsValid,
@@ -32,7 +33,7 @@ const BasicForm = (props) => {
 		reset: emailInputReset,
 		changeHandler: emailInputChangeHandler,
 		blurHandler: emailInputBlurHandler,
-	} = useInput();
+	} = useInput(isEmail);
 
 	const formIsValid =
 		emailValueIsValid && firstNameValueIsValid && lastNameValueIsValid;
