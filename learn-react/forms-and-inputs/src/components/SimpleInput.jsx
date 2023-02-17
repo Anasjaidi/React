@@ -1,66 +1,86 @@
 import { useState, useRef } from "react";
 
+import useInput from "../hooks/useInput";
+
 const SimpleInput = (props) => {
-	const [nameInput, setNameInput] = useState("");
-	// const [formIsValid, setFormIsValid] = useState(false);
-  const [isInputTouched, setIsInputTouched] = useState(false);
-	// const nameInputRef = useRef();
+	const {
+		entredValue: nameInputValue,
+		hasErr: nameInputIsInvalid,
+		blurHandler: nameInputBlurHnadler,
+		changeHandler: nameInputChangeHandler,
+		reset: nameInputReset,
+		inputIsValid: nameValueIsvalid
+	} = useInput();
+	const {
+		entredValue: emailInputValue,
+		hasErr: emailInputIsInvalid,
+		blurHandler: emailInputBlurHnadler,
+		changeHandler: emailInputChangeHandler,
+		reset: emailInputReset,
+		inputIsValid: emailValueIsvalid
+	} = useInput();
 
-	const formIsValid = nameInput.trim() != '';
-	const nameInputOnChangeHandler = (e) => {
-		setNameInput(e.target.value);
-	};
-
-	const nameInputOnBlurHandler = e => {
-		setIsInputTouched(true);
-		// if (nameInput === "") {
-		// 	setFormIsValid(false)
-		// 	return;
-		// }
-	}
+	const formIsValid = nameValueIsvalid && emailValueIsvalid;
 
 	const formSubmitHandler = (e) => {
 		e.preventDefault();
 
-    setIsInputTouched(true);
-
-		if (nameInput === "") {
-      // setFormIsValid(false)
+		if (nameInputValue.trim() === "" || emailInputValue.trim() === "") {
 			return;
 		}
-
-    // setFormIsValid(true)
-
-		// console.log(nameInput);
-
-		// console.log(nameInputRef.current.value)
-
-		// nameInputRef.current.value = "", is worked but not ideal
-
-		setNameInput(""); // for reset the input
-		setIsInputTouched(false)
+		nameInputReset();
+		emailInputReset()
 	};
 
-	const feedback = formIsValid  || !isInputTouched ? null : (
+	const nameFeedback = !nameInputIsInvalid ? null : (
 		<p className="error-text">name is empty</p>
 	);
 
-	const formClass =
-		formIsValid || !isInputTouched ? "form-control" : "form-control invalid";
+	const nameFormClass = !nameInputIsInvalid
+		? "form-control"
+		: "form-control invalid";
+
+	const emFeedback = !nameInputIsInvalid ? null : (
+		<p className="error-text">name is empty</p>
+	);
+
+	const emFormClass = !nameInputIsInvalid
+		? "form-control"
+		: "form-control invalid";
 
 	return (
 		<form onSubmit={formSubmitHandler}>
-			<div className={formClass}>
+			<div
+				className={nameInputIsInvalid ? "form-control invalid" : "form-control"}
+			>
 				<label htmlFor="name">Your Name</label>
 				<input
 					type="text"
 					id="name"
-					// ref={nameInputRef}
-					onBlur={nameInputOnBlurHandler}
-					onChange={nameInputOnChangeHandler}
-					value={nameInput}
+					onBlur={nameInputBlurHnadler}
+					onChange={nameInputChangeHandler}
+					value={nameInputValue}
 				/>
-				{feedback}
+				{nameInputIsInvalid ? (
+					<p className="error-text">name is empty</p>
+				) : null}
+			</div>
+			<div
+				className={
+					emailInputIsInvalid ? "form-control invalid" : "form-control"
+				}
+			>
+				<label htmlFor="email">Your E-mail</label>
+				<input
+					type="email"
+					id="email"
+					onBlur={emailInputBlurHnadler}
+					onChange={emailInputChangeHandler}
+					value={emailInputValue}
+				/>
+				{emailInputIsInvalid ? (
+					<p className="error-text">email is empty</p>
+				) : null}
 			</div>
 			<div className="form-actions">
 				<button disabled={!formIsValid}>Submit</button>
