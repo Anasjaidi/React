@@ -4,20 +4,20 @@ import useInput from "../hooks/useInput";
 
 const SimpleInput = (props) => {
 	const {
-		entredValue: nameInputValue,
+		value: nameInputValue,
 		hasErr: nameInputIsInvalid,
 		blurHandler: nameInputBlurHnadler,
 		changeHandler: nameInputChangeHandler,
 		reset: nameInputReset,
-		inputIsValid: nameValueIsvalid,
+		isValid: nameValueIsvalid,
 	} = useInput();
 	const {
-		entredValue: emailInputValue,
+		value: emailInputValue,
 		hasErr: emailInputIsInvalid,
 		blurHandler: emailInputBlurHnadler,
 		changeHandler: emailInputChangeHandler,
 		reset: emailInputReset,
-		inputIsValid: emailValueIsvalid,
+		isValid: emailValueIsvalid,
 	} = useInput();
 
 	const formIsValid = nameValueIsvalid && emailValueIsvalid;
