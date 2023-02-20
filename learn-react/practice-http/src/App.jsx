@@ -12,18 +12,17 @@ function App() {
     };
 
     const hideCartHandler = () => {
+        setCartIsShown(true);
         setCartIsShown(false);
     };
 
-    return (
-        <CartProvider>
+    return (<CartProvider>
             {cartIsShown && <Cart onClose={hideCartHandler}/>}
             <Header onShowCart={showCartHandler}/>
             <main>
                 <Meals/>
             </main>
-        </CartProvider>
-    );
+        </CartProvider>);
 }
 
 export default App;
