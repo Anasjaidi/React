@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useRef } from "react";
 import stylesClasses from "./MealsForm.module.css";
 import Input from "../UI/Input/Input";
 
 const MealsForm = () => {
+  const inputRef = useRef();
   return (
     <form className={stylesClasses.form}>
       <Input
         label="amount"
+        ref={inputRef}
         input={{
           id: "amount",
           label: "amount",
