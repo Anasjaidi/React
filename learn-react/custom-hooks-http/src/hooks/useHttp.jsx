@@ -7,8 +7,8 @@ const useHttps = (config, applyData) => {
 		setError(null);
 		try {
 			const response = await fetch(config.url, {
-				method: config.method,
-				body: JSON.stringify(config.body),
+				method: config.method ? config.method : ,
+				body: JSON.stringify(config.body) ? JSON.stringify(config.body) : null,
 				headers: config.headers,
 			});
 

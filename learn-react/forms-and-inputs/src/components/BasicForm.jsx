@@ -50,7 +50,7 @@ const BasicForm = (props) => {
 
 	return (
 		<form onSubmit={formSubmitHandler}>
-			<div>
+			<div className="control-group">
 				<div className={classIsValid(!firstNameInputIsInvalid)}>
 					<label htmlFor="first-name">First Name</label>
 					<input
