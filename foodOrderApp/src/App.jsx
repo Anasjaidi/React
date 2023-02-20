@@ -14,12 +14,7 @@ function App() {
     <>
       {cartIsShown && <Cart onClose={cartClose} />}
       <Header onShow={cartShow} />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Meals />} />
-          <Route path="users" element={<Users />} />
-        </Routes>
-      </BrowserRouter>
+      <Meals />
     </>
   );
 }
