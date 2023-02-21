@@ -1,11 +1,24 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useContext } from "react";
 import stylesClasses from "./MealsForm.module.css";
 import Input from "../UI/Input/Input";
+import ctx from "../../store/cartContext.jsx";
 
-const MealsForm = () => {
+const MealsForm = (props) => {
   const inputRef = useRef();
+  const [error, setError] = useState(false);
+  const context = useContext(ctx);
+
+  const formSubmitHandler = (e) => {
+    e.preventDefault();
+    const entredAmount = +inputRef.current.value;
+    if (entredAmount < 0 || entredAmount > 5) {
+      setError(true);
+    }
+    props.setAmount(entredAmount);
+  };
+
   return (
-    <form className={stylesClasses.form}>
+    <form className={stylesClasses.form} onSubmit={formSubmitHandler}>
       <Input
         label="amount"
         ref={inputRef}
@@ -14,10 +27,11 @@ const MealsForm = () => {
           label: "amount",
           min: "1",
           max: "5",
-          type: "number",
+          type: "number"
         }}
       />
-      <button type="button">+ add</button>
+      {error && <p>error</p>}
+      <button type="submit">+ add</button>
     </form>
   );
 };
