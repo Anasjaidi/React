@@ -32,11 +32,12 @@ const DUMMY_MEALS = [
 
 const AvailableMeals = () => {
     const [meals, setMeals] = useState([]);
+    const [httpErr, setHttpErr] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         (async () => {
-            const res = await fetch("https://react-http-54af6-default-rtdb.firebaseio.com/meals.json");
+            const res = await fetch("https://react-http-54af6-default-rtdb.firebaseio.com/meals.jsn");
             const data = await res.json();
 
             const loaded_meals = []
@@ -52,13 +53,22 @@ const AvailableMeals = () => {
             console.log(loaded_meals)
             setMeals(loaded_meals)
             setIsLoading(false)
-        })()
+        })().catch(err => {
+            setIsLoading(false)
+            setHttpErr("something wrong")
+        })
     }, [])
 
     if (isLoading) {
         return (
             <p className={classes.loading}>
                 Loading...
+            </p>
+        )
+    } else if (httpErr) {
+        return (
+            <p className={classes.err}>
+                {httpErr}
             </p>
         )
     }
