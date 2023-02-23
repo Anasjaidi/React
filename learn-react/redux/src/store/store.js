@@ -27,3 +27,4 @@ const store = createStore(counterReducer)
 //
 // store.dispatch({type: "ADD"})
 
+export default store
