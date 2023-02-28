@@ -4,6 +4,8 @@ import {createSlice, configureStore} from "@reduxjs/toolkit";
  * redux-toolkit includes redux so you can delete redux
  * */
 
+const initialState = {counter: 0, showCounter: true}
+
 const counterSlice = createSlice({
     name: "counter",
     initialState,
@@ -15,7 +17,7 @@ const counterSlice = createSlice({
             state.counter--;
         },
         increase: (state, payload) => {
-            state.counter += payload.amount
+            state.counter += payload.payload.amount
         },
         toogle: state => {
             state.showCounter = !state.showCounter
@@ -23,7 +25,7 @@ const counterSlice = createSlice({
     }
 })
 
-const initialState = {counter: 0, showCounter: true}
+
 const counterReducer = (state = initialState, action) => {
     if (action.type === "INC") {
         return {
@@ -75,4 +77,4 @@ const store2 = configureStore({
 
 
 export const storeActions = counterSlice.actions
-export default store
+export default store2
