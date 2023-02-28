@@ -59,6 +59,9 @@ const store = createStore(counterReducer)
  * */
 const storeWithOnlyOneSlice = createStore(counterSlice.reducer)
 
+const store2 = configureStore({
+    reducer: counterSlice.reducer
+})
 
 // const storeSubscriber = () => {
 //     const latestState = store.getState()
