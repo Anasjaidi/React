@@ -1,10 +1,10 @@
 import {createStore} from 'redux'
-import {createSlice} from "@reduxjs/toolkit";
+import {createSlice, configureStore} from "@reduxjs/toolkit";
 /**
  * redux-toolkit includes redux so you can delete redux
  * */
 
-createSlice({
+const counterSlice = createSlice({
     name: "counter",
     initialState,
     reducers: {
@@ -52,6 +52,12 @@ const counterReducer = (state = initialState, action) => {
 }
 
 const store = createStore(counterReducer)
+
+
+/**
+ * this approach is only valid when we have one slice
+ * */
+const storeWithOnlyOneSlice = createStore(counterSlice.reducer)
 
 
 // const storeSubscriber = () => {
