@@ -1,5 +1,8 @@
 import {createStore} from 'redux'
 import {createSlice} from "@reduxjs/toolkit";
+/**
+ * redux-toolkit includes redux so you can delete redux
+ * */
 
 createSlice({
     name: "counter",
