@@ -73,4 +73,6 @@ const store2 = configureStore({
 //
 // store.dispatch({type: "ADD"})
 
+
+export const storeActions = counterSlice.actions
 export default store
