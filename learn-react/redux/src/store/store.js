@@ -16,7 +16,6 @@ const counterReducer = (state = initialState, action) => {
         }
     } else if (action.type === "ADD") {
         return {
-
             ...state,
             counter: state.counter + action.amount,
         }
