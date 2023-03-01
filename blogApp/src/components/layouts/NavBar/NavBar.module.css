@@ -1,5 +1,17 @@
 .top {
-    background: aqua;
+    background: white;
     width: 100%;
     height: 50px;
+    position: sticky;
+    top: 0;
+    display: flex;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.logo, .actions {
+    flex: 3;
+}
+
+.links {
+    flex: 6;
 }
