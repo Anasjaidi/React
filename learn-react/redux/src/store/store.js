@@ -1,14 +1,16 @@
 import {createStore} from 'redux'
 import {createSlice, configureStore} from "@reduxjs/toolkit";
+
 /**
  * redux-toolkit includes redux so you can delete redux
  * */
 
-const initialState = {counter: 0, showCounter: true}
+const initialCounterState = {counter: 0, showCounter: true}
+const initialAuthState = {isAuth: false};
 
 const counterSlice = createSlice({
     name: "counter",
-    initialState,
+    initialState: initialCounterState,
     reducers: {
         inc: (state) => {
             state.counter++;
@@ -19,13 +21,26 @@ const counterSlice = createSlice({
         increase: (state, payload) => {
             state.counter += payload.payload.amount
         },
-        toogle: state => {
+        toggle: state => {
             state.showCounter = !state.showCounter
         }
     }
 })
 
+const authSlice = createSlice({
+    name: "auth",
+    initialState: initialAuthState,
+    reducers: {
+        login: state => {
+            state.isAuth = true
+        },
+        logout: state => {
+            state.isAuth = false
+        }
+    }
+})
 
+/*
 const counterReducer = (state = initialState, action) => {
     if (action.type === "INC") {
         return {
@@ -55,14 +70,15 @@ const counterReducer = (state = initialState, action) => {
 
 const store = createStore(counterReducer)
 
+*/
 
 /**
  * this approach is only valid when we have one slice
  * */
-const storeWithOnlyOneSlice = createStore(counterSlice.reducer)
+// const storeWithOnlyOneSlice = createStore(counterSlice.reducer)
 
-const store2 = configureStore({
-    reducer: counterSlice.reducer
+const store = configureStore({
+    reducer: {counter: counterSlice.reducer, auth: authSlice.reducer}
 })
 
 // const storeSubscriber = () => {
@@ -77,4 +93,5 @@ const store2 = configureStore({
 
 
 export const storeActions = counterSlice.actions
-export default store2
+export const authActions = authSlice.actions
+export default store

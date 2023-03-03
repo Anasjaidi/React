@@ -7,9 +7,9 @@ const Counter = () => {
     };
     const dispatch = useDispatch()
 
-    const counter = useSelector(state => state.counter)
+    const counter = useSelector(state => state.counter.counter)
 
-    const showCounter = useSelector(state => state.showCounter)
+    const showCounter = useSelector(state => state.counter.showCounter)
 
     const incHandler = () => {
         // dispatch({type: "INC"})
@@ -27,7 +27,7 @@ const Counter = () => {
 
     const  toggleShowHandler = () => {
         // dispatch({type: "toggle"})
-        dispatch(storeActions.toogle())
+        dispatch(storeActions.toggle())
     }
 
     return (<main className={classes.counter}>
