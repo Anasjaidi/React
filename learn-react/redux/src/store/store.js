@@ -1,33 +1,12 @@
 import {createStore} from 'redux'
 import {createSlice, configureStore} from "@reduxjs/toolkit";
 
+import counterReducer from "./counterStore.js"
+import authReducer from "./authStore.js"
+
 /**
  * redux-toolkit includes redux so you can delete redux
  * */
-
-const initialCounterState = {counter: 0, showCounter: true}
-
-
-const counterSlice = createSlice({
-    name: "counter",
-    initialState: initialCounterState,
-    reducers: {
-        inc: (state) => {
-            state.counter++;
-        },
-        dec: (state) => {
-            state.counter--;
-        },
-        increase: (state, payload) => {
-            state.counter += payload.payload.amount
-        },
-        toggle: state => {
-            state.showCounter = !state.showCounter
-        }
-    }
-})
-
-
 
 /*
 const counterReducer = (state = initialState, action) => {
@@ -67,7 +46,7 @@ const store = createStore(counterReducer)
 // const storeWithOnlyOneSlice = createStore(counterSlice.reducer)
 
 const store = configureStore({
-    reducer: {counter: counterSlice.reducer, auth: authSlice.reducer}
+    reducer: {counter: counterReducer, auth: authReducer}
 })
 
 // const storeSubscriber = () => {
@@ -79,7 +58,4 @@ const store = configureStore({
 //
 //
 // store.dispatch({type: "ADD"})
-
-
-export const storeActions = counterSlice.actions
 export default store

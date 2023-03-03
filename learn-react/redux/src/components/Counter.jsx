@@ -1,6 +1,6 @@
 import classes from './Counter.module.css';
 import {useSelector, useDispatch} from "react-redux";
-import {storeActions} from "../store/store.js";
+import {storeActions} from "../store/counterStore.js";
 
 const Counter = () => {
     const toggleCounterHandler = () => {
