@@ -4,7 +4,7 @@ import classes from './Products.module.css';
 
 const DUMMY_PRODUCTS = [
     {id: 'i1', title: "product 1", price: 6, description: "my first product"},
-    {id: 'i2', title: "product 2", price: 6, description: "my second product"}
+    {id: 'i2', title: "product 2", price: 8, description: "my second product"}
 ]
 const Products = (props) => {
   return (
