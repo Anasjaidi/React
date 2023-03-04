@@ -9,7 +9,13 @@ const CartItem = (props) => {
   const removeItemButtonClickHandler = e => {
       dispatch(cartSliceActions.removeItem(id))
   }
-  const addItemButtonClickHandler = e => {}
+  const addItemButtonClickHandler = e => {
+      dispatch(cartSliceActions.addItem({
+          title,
+          id,
+          price,
+      }))
+  }
   return (
     <li className={classes.item}>
       <header>
