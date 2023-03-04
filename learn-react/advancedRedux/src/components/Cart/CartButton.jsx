@@ -4,7 +4,7 @@ import {uiSliceActions} from "../../store/uiSlice.js";
 const CartButton = (props) => {
     const dispatch = useDispatch()
     const toggleCartHandler = e => {
-        e.preventDefault()
+        // e.preventDefault()
         dispatch(uiSliceActions.toggle())
     }
 
