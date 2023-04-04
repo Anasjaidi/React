@@ -1,6 +1,10 @@
+import {useRouter} from "next/router";
+
 const specificNews = () => {
+    const router = useRouter();
+
     return (
-        <h1>News number {12} </h1>
+        <h1>News number {router.query.newsId} </h1>
     );
 }
 
