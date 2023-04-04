@@ -1,7 +1,17 @@
+import MeetupList from "../../components/meetups/MeetupList";
 
+
+const DUMMY_MMETUPS = [
+    {
+        id: "m1",
+        title: "title",
+        image: "image",
+        address: "addr"
+    }
+]
 const HomePage = () => {
     return (
-        <h1>Hello</h1>
+        <MeetupList meetups={DUMMY_MMETUPS}>Hello</MeetupList>
     );
 }
 
