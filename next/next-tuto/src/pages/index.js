@@ -1,4 +1,7 @@
+import Link from "next/link";
 import MeetupList from "../../components/meetups/MeetupList";
+
+
 
 
 const DUMMY_MMETUPS = [
@@ -11,8 +14,11 @@ const DUMMY_MMETUPS = [
 ]
 const HomePage = () => {
     return (
-        <MeetupList meetups={DUMMY_MMETUPS}>Hello</MeetupList>
-    );
+			<>
+				<MeetupList meetups={DUMMY_MMETUPS}>Hello</MeetupList>
+                <Link href={"/news/anas-jaidi-hit-control"}>new news</Link>
+			</>
+		);
 }
 
 export default HomePage
