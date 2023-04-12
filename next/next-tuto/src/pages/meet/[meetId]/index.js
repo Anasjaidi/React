@@ -2,7 +2,7 @@ import MeetupDetails from "../../../../components/meetups/MeetupDetails"
 
 const MeetUpItem = (props) => {
   return (
-    <MeetupDetails image="image"  title="new title" address="new address" description="new description"/>
+    <MeetupDetails image={props.image}  title={props.title} address={props.address} description={props.description} />
   )
 }
 
@@ -15,6 +15,7 @@ const MeetUpItem = (props) => {
 */
 export function getStaticPaths() {
   return {
+    fallback: false,
 		paths: [
 			{
 				params: {
@@ -31,14 +32,14 @@ export function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  const ID = context.param.meetId;
+  const ID = context.params.meetId;
 
   return {
     props: {
-      image: "",
-      title: "",
-      address: "",
-      description: "",
+      image: "anas",
+      title: "anas",
+      address: "anas",
+      description: "anas",
     }
   }
 }
