@@ -17,6 +17,7 @@ const HomePage = () => {
 			<>
 				<MeetupList meetups={DUMMY_MMETUPS}>Hello</MeetupList>
                 <Link href={"/news/anas-jaidi-hit-control"}>new news</Link>
+                <a href="/news/reload-link">reload link</a>
 			</>
 		);
 }
