@@ -9,6 +9,12 @@ const DUMMY_MMETUPS = [
 		image: "image",
 		address: "addr",
 	},
+	{
+		id: "m2",
+		title: "title2",
+		image: "image2",
+		address: "addr2",
+	},
 ];
 
 
@@ -51,13 +57,15 @@ const HomePage = (props) => {
  * server side renders, run on every request 
  * */
  
-export async function getServerProps(context) {
+export async function getServerSideProps(context) {
   // fetch data from server
 
-  req = context.req
-  res = context.res 
+  const req = context.req
+  const res = context.res 
   return {
-    props: { }
+    props: {
+      meetups: DUMMY_MMETUPS
+    }
   }
 }
 
