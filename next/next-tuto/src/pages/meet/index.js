@@ -33,13 +33,31 @@ const HomePage = (props) => {
 	);
 };
 
-// static site generation run only at build time (once)
-export async function getStaticProps() {
+/**
+ * static site generation run only at build time (once)
+ * */
+
+
+// export async function getStaticProps() {
+//   return {
+//     props: {
+//       meetups: DUMMY_MMETUPS
+//     },
+//     revalidate: 3 // re run the code in server to fetch new data every x secs
+//   }
+// }
+
+/**
+ * server side renders, run on every request 
+ * */
+ 
+export async function getServerProps(context) {
+  // fetch data from server
+
+  req = context.req
+  res = context.res 
   return {
-    props: {
-      meetups: DUMMY_MMETUPS
-    },
-    revalidate: 3 // re run the code in server to fetch new data every x secs
+    props: { }
   }
 }
 
