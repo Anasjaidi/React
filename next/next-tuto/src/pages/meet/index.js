@@ -1,5 +1,6 @@
 import Link from "next/link";
 import MeetupList from "../../../components/meetups/MeetupList";
+import { useEffect, useState } from "react";
 
 const DUMMY_MMETUPS = [
 	{
@@ -9,14 +10,35 @@ const DUMMY_MMETUPS = [
 		address: "addr",
 	},
 ];
-const HomePage = () => {
+
+
+const HomePage = (props) => {
+
+  // const [meetups, setMeetups] = useState([])
+
+  // useEffect(() => {
+  //   // send http reuest
+  //   console.log(props);
+  //   setMeetups(DUMMY_MMETUPS)
+  
+
+  // }, [])
+
 	return (
 		<>
-			<MeetupList meetups={DUMMY_MMETUPS}>Hello</MeetupList>
+			<MeetupList meetups={props.meetups}>Hello</MeetupList>
 			<Link href={"/news/anas-jaidi-hit-control"}>new news</Link>
 			<a href="/news/reload-link">reload link</a>
 		</>
 	);
 };
+
+export async function getStaticProps() {
+  return {
+    props: {
+      meetups: DUMMY_MMETUPS
+    }
+  }
+}
 
 export default HomePage;
