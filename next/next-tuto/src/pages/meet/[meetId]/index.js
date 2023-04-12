@@ -1,6 +1,8 @@
+import MeetupDetails from "../../../../components/meetups/MeetupDetails"
+
 const MeetUpItem = (props) => {
   return (
-    <p></p>
+    <MeetupDetails image="image"  title="new title" address="new address" description="new description"/>
   )
 }
 
