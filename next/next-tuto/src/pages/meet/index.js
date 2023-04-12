@@ -33,11 +33,13 @@ const HomePage = (props) => {
 	);
 };
 
+// static site generation run only at build time (once)
 export async function getStaticProps() {
   return {
     props: {
       meetups: DUMMY_MMETUPS
-    }
+    },
+    revalidate: 3 // re run the code in server to fetch new data every x secs
   }
 }
 
